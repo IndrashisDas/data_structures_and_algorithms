@@ -25,7 +25,7 @@ class NodeDouble:
         self.prev = None
     
 
-class LinkedList:
+class BaseLinkedList:
     
     def __init__(
         self,
@@ -34,6 +34,10 @@ class LinkedList:
     
     @abstractmethod
     def is_empty(self,) -> None:
+        raise NotImplementedError
+    
+    @abstractmethod
+    def create_list(self,) -> None:
         raise NotImplementedError
     
     @abstractmethod
