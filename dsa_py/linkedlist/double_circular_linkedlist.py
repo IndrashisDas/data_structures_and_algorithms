@@ -4,6 +4,8 @@ Double Circular Linkedlist
 The following file implements all the functionalities
 within Base Linkedlist for Double Circular Linkedlist.
 """
+from typing import List
+
 from dsa_py.linkedlist.base_linkedlist import BaseLinkedlist, Node
 
 
@@ -13,6 +15,24 @@ class DoubleCircularLinkedlist(BaseLinkedlist):
         self,
     ) -> None:
         super().__init__()
+    
+    def show_linkedlist(
+        self,
+    ) -> List[int]:
+        """
+        Prints the linkedlist.
+
+        Returns:
+            List[int]: The linkedlist node values
+        """
+        values = []
+        current = self.head
+        while current:
+            values.append(current.value)
+            if current.next is self.head:
+                break
+            current = current.next
+        return values
     
     def is_empty(
         self,
@@ -60,7 +80,23 @@ class DoubleCircularLinkedlist(BaseLinkedlist):
         Args:
             value (int): The integer value to be held by the new node.
         """
-        pass
+        node = Node(value=value)
+        if self.is_empty():
+            self.head = node
+            node.prev = self.head
+            node.next = self.head
+            return
+        
+        current = self.head
+        while current:
+            if current.next is self.head:
+                break
+            current = current.next
+        node.next = self.head
+        current.next = node
+        node.prev = current
+        self.head.prev = node
+        self.head = node
     
     def insert_by_index(
         self,

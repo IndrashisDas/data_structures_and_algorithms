@@ -4,6 +4,8 @@ Double Linkedlist
 The following file implements all the functionalities
 within Base Linkedlist for Double Linkedlist.
 """
+from typing import List
+
 from dsa_py.linkedlist.base_linkedlist import BaseLinkedlist, Node
 
 
@@ -13,6 +15,22 @@ class DoubleLinkedlist(BaseLinkedlist):
         self,
     ) -> None:
         super().__init__()
+    
+    def show_linkedlist(
+        self,
+    ) -> List[int]:
+        """
+        Prints the linkedlist.
+
+        Returns:
+            List[int]: The linkedlist node values
+        """
+        values = []
+        current = self.head
+        while current:
+            values.append(current.value)
+            current = current.next
+        return values
     
     def is_empty(
         self,
@@ -56,7 +74,15 @@ class DoubleLinkedlist(BaseLinkedlist):
         Args:
             value (int): The integer value to be held by the new node.
         """
-        pass
+        node = Node(value=value)
+        if self.is_empty():
+            self.head = node
+            return
+        
+        node.next = self.head
+        self.head.prev = node
+        self.head = node
+        
     
     def insert_by_index(
         self,

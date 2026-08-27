@@ -27,17 +27,33 @@ class TestSingleLinkedlist(unittest.TestCase):
         self.assertEqual(is_empty, False)
 
     def test_insert(self):
+        # Insert single node
+        values = [1]
+        for value in values:
+            self.linkedlist.insert(value=value)
+        node_values = self.linkedlist.show_linkedlist()
+        self.assertEqual(values, node_values)
+        
         # Insert multiple nodes into the linkedlist
-        self.linkedlist.insert(value=3)
-        self.linkedlist.insert(value=2)
-        self.linkedlist.insert(value=1)
-        self.linkedlist.insert(value=0)
-        self.linkedlist.insert(value=-1)
-        self.linkedlist.insert(value=-2)
-        self.linkedlist.insert(value=-3)
+        new_values = [3, 2, 1, 0, -1, -2, -3]
+        for value in new_values:
+            self.linkedlist.insert(value=value)
+        node_values = self.linkedlist.show_linkedlist()
+        self.assertEqual(values + new_values, node_values)
 
     def test_insert_start(self):
-        pass
+        # Insert multiple nodes into the linkedlist
+        values = [3, 2, 1, 0, -1, -2, -3]
+        for value in values:
+            self.linkedlist.insert(value=value)
+        node_values = self.linkedlist.show_linkedlist()
+        self.assertEqual(values, node_values)
+        
+        # Insert a node at the start of the linkedlist
+        start_value = 4
+        self.linkedlist.insert_start(value=start_value)
+        node_values = self.linkedlist.show_linkedlist()
+        self.assertEqual([start_value] + values, node_values)
     
     def test_insert_by_index(self):
         pass

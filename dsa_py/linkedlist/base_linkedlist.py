@@ -10,7 +10,7 @@ All the possible linkedlist implementations include:
     - Double Circular Linkedlist
 """
 from dataclasses import dataclass
-from typing import Any, Tuple
+from typing import Any, List
 
 
 @dataclass
@@ -30,6 +30,29 @@ class BaseLinkedlist:
         """
         self.head: Node | None = None
     
+    def show_linkedlist(
+        self,
+    ) -> List[int]:
+        """
+        Prints the linkedlist.
+        
+        --------------------------------------------------------------------
+        |          Method            | Time Complexity | Memory Complexity |
+        --------------------------------------------------------------------
+        | Single Linkedlist          |       O(n)      |       O(n)        |
+        --------------------------------------------------------------------
+        | Double Linkedlist          |       O(n)      |       O(n)        |
+        --------------------------------------------------------------------
+        | Single Circular Linkedlist |       O(n)      |       O(n)        |
+        --------------------------------------------------------------------
+        | Double Circular Linkedlist |       O(n)      |       O(n)        |
+        --------------------------------------------------------------------
+
+        Returns:
+            List[int]: The linkedlist node values
+        """
+        raise NotImplementedError
+    
     def is_empty(
         self,
     )-> bool:
@@ -39,13 +62,13 @@ class BaseLinkedlist:
         --------------------------------------------------------------------
         |          Method            | Time Complexity | Memory Complexity |
         --------------------------------------------------------------------
-        | Single Linkedlist          |                 |                   |
+        | Single Linkedlist          |       O(1)      |        O(1)       |
         --------------------------------------------------------------------
-        | Double Linkedlist          |                 |                   |
+        | Double Linkedlist          |       O(1)      |        O(1)       |
         --------------------------------------------------------------------
-        | Single Circular Linkedlist |                 |                   |
+        | Single Circular Linkedlist |       O(1)      |        O(1)       |
         --------------------------------------------------------------------
-        | Double Circular Linkedlist |                 |                   |
+        | Double Circular Linkedlist |       O(1)      |        O(1)       |
         --------------------------------------------------------------------
 
         Returns:
@@ -63,13 +86,13 @@ class BaseLinkedlist:
         --------------------------------------------------------------------
         |          Method            | Time Complexity | Memory Complexity |
         --------------------------------------------------------------------
-        | Single Linkedlist          |                 |                   |
+        | Single Linkedlist          |       O(n)      |       O(n)        |
         --------------------------------------------------------------------
-        | Double Linkedlist          |                 |                   |
+        | Double Linkedlist          |       O(n)      |       O(n)        |
         --------------------------------------------------------------------
-        | Single Circular Linkedlist |                 |                   |
+        | Single Circular Linkedlist |       O(n)      |       O(n)        |
         --------------------------------------------------------------------
-        | Double Circular Linkedlist |                 |                   |
+        | Double Circular Linkedlist |       O(n)      |       O(n)        |
         --------------------------------------------------------------------
 
         Args:
@@ -87,13 +110,13 @@ class BaseLinkedlist:
         --------------------------------------------------------------------
         |          Method            | Time Complexity | Memory Complexity |
         --------------------------------------------------------------------
-        | Single Linkedlist          |                 |                   |
+        | Single Linkedlist          |       O(1)      |       O(1)        |
         --------------------------------------------------------------------
-        | Double Linkedlist          |                 |                   |
+        | Double Linkedlist          |       O(1)      |       O(1)        |
         --------------------------------------------------------------------
-        | Single Circular Linkedlist |                 |                   |
+        | Single Circular Linkedlist |       O(n)      |       O(n)        |
         --------------------------------------------------------------------
-        | Double Circular Linkedlist |                 |                   |
+        | Double Circular Linkedlist |       O(n)      |       O(n)        |
         --------------------------------------------------------------------
 
         Args:
