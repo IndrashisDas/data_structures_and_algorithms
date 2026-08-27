@@ -135,13 +135,13 @@ class BaseLinkedlist:
         --------------------------------------------------------------------
         |          Method            | Time Complexity | Memory Complexity |
         --------------------------------------------------------------------
-        | Single Linkedlist          |                 |                   |
+        | Single Linkedlist          |       O(n)      |       O(n)        |
         --------------------------------------------------------------------
-        | Double Linkedlist          |                 |                   |
+        | Double Linkedlist          |       O(n)      |       O(n)        |
         --------------------------------------------------------------------
-        | Single Circular Linkedlist |                 |                   |
+        | Single Circular Linkedlist |       O(n)      |       O(n)        |
         --------------------------------------------------------------------
-        | Double Circular Linkedlist |                 |                   |
+        | Double Circular Linkedlist |       O(n)      |       O(n)        |
         --------------------------------------------------------------------
 
         Args:
