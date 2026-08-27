@@ -1,5 +1,5 @@
 """
-Base Linkedlist
+Base Linkedlist implementation
 
 The following file contains the code for the base linkedlist 
 which is inherited by different types of other linkedlists.
@@ -13,10 +13,11 @@ from dataclasses import dataclass
 from typing import Any, Tuple
 
 
-@dataclass(frozen=True)
+@dataclass
 class Node:
     value: int
-    reference: Any
+    next: Any | None = None
+    prev: Any | None = None
     
     
 class BaseLinkedlist:
