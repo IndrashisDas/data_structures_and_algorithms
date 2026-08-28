@@ -54,7 +54,26 @@ class TestDoubleLinkedlist(unittest.TestCase):
         self.assertEqual([start_value] + values, node_values)
     
     def test_insert_by_index(self):
-        pass
+        # Insert multiple nodes into the linkedlist
+        values = [3, 2, 1, 0, -1, -2, -3]
+        for value in values:
+            self.linkedlist.insert(value=value)
+        node_values = self.linkedlist.show_linkedlist()
+        self.assertEqual(values, node_values)
+        
+        # Insert a node at idx = 0
+        idx = 0
+        idx_value = 4
+        self.linkedlist.insert_by_index(idx=idx, value=idx_value)
+        node_values = self.linkedlist.show_linkedlist()
+        self.assertEqual([idx_value] + values, node_values)
+        
+        # Insert a node at idx = 2
+        idx = 2
+        idx_value = 9
+        self.linkedlist.insert_by_index(idx=idx, value=idx_value)
+        node_values = self.linkedlist.show_linkedlist()
+        self.assertEqual([4, 3, 9, 2, 1, 0, -1, -2, -3], node_values)
     
     def test_search_by_index(self):
         pass

@@ -94,7 +94,25 @@ class SingleLinkedlist(BaseLinkedlist):
             idx (int): The index at which the node is to be inserted.
             value (int): The integer value to be held by the new node.
         """
-        pass
+        node = Node(value=value)
+        if idx < 0:
+            return
+        if idx > self.count_length():
+            return
+        
+        if idx == 0:
+            self.insert_start(value=value)
+            return
+        
+        counter = 0
+        current = self.head
+        while current:
+            counter += 1
+            if counter == idx:
+                break
+            current = current.next
+        node.next = current.next
+        current.next = node
     
     def search_by_index(
         self,
@@ -214,8 +232,13 @@ class SingleLinkedlist(BaseLinkedlist):
         Returns:
             int: The number of elements in a linkedlist.
         """
-        pass
-    
+        counter = 0
+        current = self.head
+        while current:
+            counter += 1
+            current = current.next
+        return counter
+            
     def reverese(
         self,
     ) -> None:

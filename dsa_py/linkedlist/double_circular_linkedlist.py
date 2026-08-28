@@ -110,7 +110,40 @@ class DoubleCircularLinkedlist(BaseLinkedlist):
             idx (int): The index at which the node is to be inserted.
             value (int): The integer value to be held by the new node.
         """
-        pass
+        node = Node(value=value)
+        length = self.count_length()
+        if idx < 0:
+            return
+        if idx > length:
+            return
+        
+        if idx == 0:
+            self.insert_start(value=value)
+            return
+        
+        counter = 0
+        current = self.head
+        break_by_counter = False
+        break_by_length = False
+        while current:
+            if current.next is self.head:
+                break_by_length = True
+                break
+            counter += 1
+            if counter == idx:
+                break_by_counter = True
+                break
+            current = current.next
+        if break_by_length:        
+            current.next = node
+            node.prev = current
+            node.next = self.head
+            self.head.prev = node
+        if break_by_counter:
+            node.next = current.next
+            current.next.prev = node
+            current.next = node
+            node.prev = current
     
     def search_by_index(
         self,
@@ -230,7 +263,14 @@ class DoubleCircularLinkedlist(BaseLinkedlist):
         Returns:
             int: The number of elements in a linkedlist.
         """
-        pass
+        counter = 0
+        current = self.head
+        while current:
+            if current.next is self.head:
+                break
+            counter += 1
+            current = current.next
+        return counter
     
     def reverese(
         self,
