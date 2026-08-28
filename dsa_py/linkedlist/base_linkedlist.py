@@ -86,13 +86,13 @@ class BaseLinkedlist:
         --------------------------------------------------------------------
         |          Method            | Time Complexity | Memory Complexity |
         --------------------------------------------------------------------
-        | Single Linkedlist          |       O(n)      |       O(n)        |
+        | Single Linkedlist          |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Double Linkedlist          |       O(n)      |       O(n)        |
+        | Double Linkedlist          |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Single Circular Linkedlist |       O(n)      |       O(n)        |
+        | Single Circular Linkedlist |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Double Circular Linkedlist |       O(n)      |       O(n)        |
+        | Double Circular Linkedlist |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
 
         Args:
@@ -114,9 +114,9 @@ class BaseLinkedlist:
         --------------------------------------------------------------------
         | Double Linkedlist          |       O(1)      |       O(1)        |
         --------------------------------------------------------------------
-        | Single Circular Linkedlist |       O(n)      |       O(n)        |
+        | Single Circular Linkedlist |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Double Circular Linkedlist |       O(n)      |       O(n)        |
+        | Double Circular Linkedlist |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
 
         Args:
@@ -135,13 +135,13 @@ class BaseLinkedlist:
         --------------------------------------------------------------------
         |          Method            | Time Complexity | Memory Complexity |
         --------------------------------------------------------------------
-        | Single Linkedlist          |       O(n)      |       O(n)        |
+        | Single Linkedlist          |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Double Linkedlist          |       O(n)      |       O(n)        |
+        | Double Linkedlist          |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Single Circular Linkedlist |       O(n)      |       O(n)        |
+        | Single Circular Linkedlist |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Double Circular Linkedlist |       O(n)      |       O(n)        |
+        | Double Circular Linkedlist |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
 
         Args:
@@ -153,54 +153,54 @@ class BaseLinkedlist:
     def search_by_index(
         self,
         idx: int,
-    ) -> int:
+    ) -> int | None:
         """
         Search the value of the node by the index.
         
         --------------------------------------------------------------------
         |          Method            | Time Complexity | Memory Complexity |
         --------------------------------------------------------------------
-        | Single Linkedlist          |                 |                   |
+        | Single Linkedlist          |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Double Linkedlist          |                 |                   |
+        | Double Linkedlist          |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Single Circular Linkedlist |                 |                   |
+        | Single Circular Linkedlist |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Double Circular Linkedlist |                 |                   |
+        | Double Circular Linkedlist |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
 
         Args:
             idx (int): The search position.
 
         Returns:
-            int: The value found at the specific index.
+            int | None: The value found at the specific index.
         """
         raise NotImplementedError
     
     def search_by_value(
         self,
         value: int,
-    ) -> int:
+    ) -> int | None:
         """
         Searches the linkedlist by value and return the index.
         
         --------------------------------------------------------------------
         |          Method            | Time Complexity | Memory Complexity |
         --------------------------------------------------------------------
-        | Single Linkedlist          |                 |                   |
+        | Single Linkedlist          |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Double Linkedlist          |                 |                   |
+        | Double Linkedlist          |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Single Circular Linkedlist |                 |                   |
+        | Single Circular Linkedlist |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Double Circular Linkedlist |                 |                   |
+        | Double Circular Linkedlist |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
 
         Args:
             value (int): The value to be searched within the linkelist.
 
         Returns:
-            int: The position at which the value was found.
+            int | None: The position at which the value was found.
         """
         raise NotImplementedError
     
@@ -216,13 +216,13 @@ class BaseLinkedlist:
         --------------------------------------------------------------------
         |          Method            | Time Complexity | Memory Complexity |
         --------------------------------------------------------------------
-        | Single Linkedlist          |                 |                   |
+        | Single Linkedlist          |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Double Linkedlist          |                 |                   |
+        | Double Linkedlist          |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Single Circular Linkedlist |                 |                   |
+        | Single Circular Linkedlist |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Double Circular Linkedlist |                 |                   |
+        | Double Circular Linkedlist |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
 
         Args:
@@ -230,35 +230,6 @@ class BaseLinkedlist:
                 value needs to be updated.
             value (int): The value that replaces the 
                 existing node's value.
-        """
-        raise NotImplementedError
-    
-    def update_by_value(
-        self,
-        value: int,
-        all: bool = False,
-    ) -> None:
-        """
-        Updates a node by value. You can update either only 
-        the first occurence or all the occurences of the same
-        value in the linkedlist.
-        
-        --------------------------------------------------------------------
-        |          Method            | Time Complexity | Memory Complexity |
-        --------------------------------------------------------------------
-        | Single Linkedlist          |                 |                   |
-        --------------------------------------------------------------------
-        | Double Linkedlist          |                 |                   |
-        --------------------------------------------------------------------
-        | Single Circular Linkedlist |                 |                   |
-        --------------------------------------------------------------------
-        | Double Circular Linkedlist |                 |                   |
-        --------------------------------------------------------------------
-
-        Args:
-            value (int): Value is the value to be searched and updated.
-            all (bool, optional): Decides if you update the first occurence
-                or all the occurences of the node. Defaults to False.
         """
         raise NotImplementedError
     
@@ -271,13 +242,13 @@ class BaseLinkedlist:
         --------------------------------------------------------------------
         |          Method            | Time Complexity | Memory Complexity |
         --------------------------------------------------------------------
-        | Single Linkedlist          |                 |                   |
+        | Single Linkedlist          |       O(1)      |       O(1)        |
         --------------------------------------------------------------------
-        | Double Linkedlist          |                 |                   |
+        | Double Linkedlist          |       O(1)      |       O(1)        |
         --------------------------------------------------------------------
-        | Single Circular Linkedlist |                 |                   |
+        | Single Circular Linkedlist |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Double Circular Linkedlist |                 |                   |
+        | Double Circular Linkedlist |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
         """
         raise NotImplementedError
@@ -291,13 +262,13 @@ class BaseLinkedlist:
         --------------------------------------------------------------------
         |          Method            | Time Complexity | Memory Complexity |
         --------------------------------------------------------------------
-        | Single Linkedlist          |                 |                   |
+        | Single Linkedlist          |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Double Linkedlist          |                 |                   |
+        | Double Linkedlist          |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Single Circular Linkedlist |                 |                   |
+        | Single Circular Linkedlist |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Double Circular Linkedlist |                 |                   |
+        | Double Circular Linkedlist |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
         """
         raise NotImplementedError
@@ -364,13 +335,13 @@ class BaseLinkedlist:
         --------------------------------------------------------------------
         |          Method            | Time Complexity | Memory Complexity |
         --------------------------------------------------------------------
-        | Single Linkedlist          |                 |                   |
+        | Single Linkedlist          |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Double Linkedlist          |                 |                   |
+        | Double Linkedlist          |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Single Circular Linkedlist |                 |                   |
+        | Single Circular Linkedlist |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Double Circular Linkedlist |                 |                   |
+        | Double Circular Linkedlist |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
 
         Returns:

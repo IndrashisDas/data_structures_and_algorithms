@@ -121,7 +121,7 @@ class DoubleLinkedlist(BaseLinkedlist):
     def search_by_index(
         self,
         idx: int,
-    ) -> int:
+    ) -> int | None:
         """
         Search the value of the node by the index.
         
@@ -129,14 +129,24 @@ class DoubleLinkedlist(BaseLinkedlist):
             idx (int): The search position.
 
         Returns:
-            int: The value found at the specific index.
+            int | None: The value found at the specific index.
         """
-        pass
+        if idx < 0:
+            return None
+        counter = 0
+        found = None
+        current = self.head
+        while current:
+            if counter == idx:
+                found = current.value
+            counter += 1
+            current = current.next
+        return found
     
     def search_by_value(
         self,
         value: int,
-    ) -> int:
+    ) -> int | None:
         """
         Searches the linkedlist by value and return the index.
         
@@ -144,9 +154,18 @@ class DoubleLinkedlist(BaseLinkedlist):
             value (int): The value to be searched within the linkelist.
 
         Returns:
-            int: The position at which the value was found.
+            int | None: The position at which the value was found.
         """
-        pass
+        found = None
+        counter = 0
+        current = self.head
+        while current:
+            if current.value == value:
+                found = counter
+                break
+            counter += 1
+            current = current.next
+        return found
     
     def update_by_index(
         self,
@@ -163,24 +182,18 @@ class DoubleLinkedlist(BaseLinkedlist):
             value (int): The value that replaces the 
                 existing node's value.
         """
-        pass
-    
-    def update_by_value(
-        self,
-        value: int,
-        all: bool = False,
-    ) -> None:
-        """
-        Updates a node by value. You can update either only 
-        the first occurence or all the occurences of the same
-        value in the linkedlist.
-
-        Args:
-            value (int): Value is the value to be searched and updated.
-            all (bool, optional): Decides if you update the first occurence
-                or all the occurences of the node. Defaults to False.
-        """
-        pass
+        if idx < 0:
+            return
+        if idx > self.count_length():
+            return
+        
+        counter = 0
+        current = self.head
+        while current:
+            if counter == idx:
+                current.value = value
+            counter += 1
+            current = current.next
     
     def delete_start(
         self,
@@ -188,7 +201,11 @@ class DoubleLinkedlist(BaseLinkedlist):
         """
         Delete the first node in the linkedlist.
         """
-        pass
+        if self.is_empty():
+            return None
+        
+        self.head.next.prev = None
+        self.head = self.head.next
     
     def delete_end(
         self,
@@ -196,7 +213,16 @@ class DoubleLinkedlist(BaseLinkedlist):
         """
         Delete the last node in the linkedlist.
         """
-        pass
+        if self.is_empty():
+            return None
+        
+        current = self.head
+        while current:
+            if current.next.next is None:
+                current.next.prev = None
+                current.next = None
+                break
+            current = current.next
     
     def delete_by_index(
         self,

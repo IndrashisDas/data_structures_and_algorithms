@@ -83,22 +83,91 @@ class TestDoubleCircularLinkedlist(unittest.TestCase):
         self.assertEqual([6, 4, 3, 9, 2, 1, 0, -1, -2, -3], node_values)
     
     def test_search_by_index(self):
-        pass
+        # Insert multiple nodes into the linkedlist
+        values = [3, 1, 2, 0]
+        for value in values:
+            self.linkedlist.insert(value=value)
+        node_values = self.linkedlist.show_linkedlist()
+        self.assertEqual(values, node_values)
+        
+        # Search idx = 0
+        idx = 0
+        result = self.linkedlist.search_by_index(idx=idx)
+        self.assertEqual(3, result)
+        
+        # Search idx = 2
+        idx = 2
+        result = self.linkedlist.search_by_index(idx=idx)
+        self.assertEqual(2, result)
+        
+        # Search idx = 4
+        idx = 4
+        result = self.linkedlist.search_by_index(idx=idx)
+        self.assertEqual(None, result)
     
     def test_search_by_value(self):
-        pass
+        # Insert multiple nodes into the linkedlist
+        values = [3, 2, 1, 0]
+        for value in values:
+            self.linkedlist.insert(value=value)
+        node_values = self.linkedlist.show_linkedlist()
+        self.assertEqual(values, node_values)
+        
+        # Search value = 1
+        value = 1
+        result = self.linkedlist.search_by_value(value=value)
+        self.assertEqual(2, result)
+        
+        # Search value = 4
+        value = 4
+        result = self.linkedlist.search_by_value(value=value)
+        self.assertEqual(None, result)
     
     def test_update_by_index(self):
-        pass
-    
-    def test_update_by_value(self):
-        pass
+        # Insert multiple nodes into the linkedlist
+        values = [3, 2, 1, 0]
+        for value in values:
+            self.linkedlist.insert(value=value)
+        node_values = self.linkedlist.show_linkedlist()
+        self.assertEqual(values, node_values)
+        
+        # Update idx = 0
+        idx = 0
+        value = 4
+        self.linkedlist.update_by_index(idx=idx, value=value)
+        node_values = self.linkedlist.show_linkedlist()
+        self.assertEqual([4, 2, 1, 0], node_values)
+        
+        # Update idx = 4
+        idx = 4
+        value = 5
+        self.linkedlist.update_by_index(idx=idx, value=value)
+        node_values = self.linkedlist.show_linkedlist()
+        self.assertEqual([4, 2, 1, 0], node_values)
     
     def test_delete_start(self):
-        pass
+        # Insert multiple nodes into the linkedlist
+        values = [3, 2, 1, 0]
+        for value in values:
+            self.linkedlist.insert(value=value)
+        node_values = self.linkedlist.show_linkedlist()
+        self.assertEqual(values, node_values)
+        
+        self.linkedlist.delete_start()
+        node_values = self.linkedlist.show_linkedlist()
+        self.assertEqual([2, 1, 0], node_values)
     
     def test_delete_end(self):
-        pass
+        # Insert multiple nodes into the linkedlist
+        values = [3, 2, 1, 0]
+        for value in values:
+            self.linkedlist.insert(value=value)
+        node_values = self.linkedlist.show_linkedlist()
+        self.assertEqual(values, node_values)
+        
+        self.linkedlist.delete_end()
+        node_values = self.linkedlist.show_linkedlist()
+        self.assertEqual([3, 2, 1], node_values)
     
     def test_delete_by_index(self):
         pass
@@ -107,7 +176,21 @@ class TestDoubleCircularLinkedlist(unittest.TestCase):
         pass
     
     def test_count_length(self):
-        pass
+        # Check empty linkedlist length
+        result = self.linkedlist.count_length()
+        self.assertEqual(0, result)
+        
+        # Insert multiple nodes into the linkedlist
+        values = [3, 1, 2, 0]
+        length = len(values)
+        for value in values:
+            self.linkedlist.insert(value=value)
+        node_values = self.linkedlist.show_linkedlist()
+        self.assertEqual(values, node_values)
+        
+        # Count length of non-empty linkedlist
+        result = self.linkedlist.count_length()
+        self.assertEqual(length, result)
     
     def test_reverese(self):
         pass 
