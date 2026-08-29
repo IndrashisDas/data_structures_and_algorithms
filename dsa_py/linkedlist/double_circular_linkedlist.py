@@ -276,12 +276,36 @@ class DoubleCircularLinkedlist(BaseLinkedlist):
         Args:
             idx (int): The node at this position is deleted.
         """
-        pass
+        length = self.count_length()
+        if idx < 0:
+            return
+        if idx > length:
+            return
+        if self.is_empty():
+            return
+        
+        if idx == 0:
+            self.delete_start()
+            return
+        
+        if idx == length - 1:
+            self.delete_end()
+            return
+        
+        counter = 0
+        current = self.head
+        while current:
+            if counter + 1 == idx:
+                current.next = current.next.next
+                current.next.next.prev = current
+                break
+            current = current.next
+            counter += 1
     
     def delete_by_value(
         self,
         value: int,
-        all: bool = False,
+        delete_all: bool = False,
     ) -> None:
         """
         Deletes a node by value. You can delete either only 
@@ -290,10 +314,34 @@ class DoubleCircularLinkedlist(BaseLinkedlist):
 
         Args:
             value (int): Value is the value to be searched and deleted.
-            all (bool, optional): Decides if you delete the first occurence
+            delete_all (bool, optional): Decides if you delete the first occurence
                 or all the occurences of the node. Defaults to False.
         """
-        pass
+        if self.is_empty():
+            return
+
+        length = self.count_length()
+        current = self.head
+        for _ in range(length):
+            next_node = current.next
+            if current.value == value:
+                if current.next is current:
+                    self.head = None
+                    current.next = None
+                    current.prev = None
+                    break
+
+                current.prev.next = next_node
+                next_node.prev = current.prev
+                if current is self.head:
+                    self.head = next_node
+                current.next = None
+                current.prev = None
+
+                if not delete_all:
+                    break
+
+            current = next_node
     
     def count_length(
         self,
@@ -313,10 +361,23 @@ class DoubleCircularLinkedlist(BaseLinkedlist):
             current = current.next
         return counter
     
-    def reverese(
+    def reverse(
         self,
     ) -> None:
         """
         Shows a linkedlist in a reverse order.
         """
-        pass
+        if self.is_empty():
+            return
+
+        new_head = self.head.prev
+        current = self.head
+        while True:
+            next_node = current.next
+            current.next = current.prev
+            current.prev = next_node
+            current = next_node
+            if current is self.head:
+                break
+
+        self.head = new_head

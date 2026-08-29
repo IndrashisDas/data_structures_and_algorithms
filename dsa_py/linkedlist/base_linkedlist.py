@@ -283,13 +283,13 @@ class BaseLinkedlist:
         --------------------------------------------------------------------
         |          Method            | Time Complexity | Memory Complexity |
         --------------------------------------------------------------------
-        | Single Linkedlist          |                 |                   |
+        | Single Linkedlist          |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Double Linkedlist          |                 |                   |
+        | Double Linkedlist          |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Single Circular Linkedlist |                 |                   |
+        | Single Circular Linkedlist |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Double Circular Linkedlist |                 |                   |
+        | Double Circular Linkedlist |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
 
         Args:
@@ -300,7 +300,7 @@ class BaseLinkedlist:
     def delete_by_value(
         self,
         value: int,
-        all: bool = False,
+        delete_all: bool = False,
     ) -> None:
         """
         Deletes a node by value. You can delete either only 
@@ -310,18 +310,18 @@ class BaseLinkedlist:
         --------------------------------------------------------------------
         |          Method            | Time Complexity | Memory Complexity |
         --------------------------------------------------------------------
-        | Single Linkedlist          |                 |                   |
+        | Single Linkedlist          |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Double Linkedlist          |                 |                   |
+        | Double Linkedlist          |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Single Circular Linkedlist |                 |                   |
+        | Single Circular Linkedlist |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Double Circular Linkedlist |                 |                   |
+        | Double Circular Linkedlist |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
 
         Args:
             value (int): Value is the value to be searched and deleted.
-            all (bool, optional): Decides if you delete the first occurence
+            delete_all (bool, optional): Decides if you delete the first occurence
                 or all the occurences of the node. Defaults to False.
         """
         raise NotImplementedError
@@ -349,7 +349,7 @@ class BaseLinkedlist:
         """
         raise NotImplementedError
     
-    def reverese(
+    def reverse(
         self,
     ) -> None:
         """
@@ -358,13 +358,13 @@ class BaseLinkedlist:
         --------------------------------------------------------------------
         |          Method            | Time Complexity | Memory Complexity |
         --------------------------------------------------------------------
-        | Single Linkedlist          |                 |                   |
+        | Single Linkedlist          |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Double Linkedlist          |                 |                   |
+        | Double Linkedlist          |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Single Circular Linkedlist |                 |                   |
+        | Single Circular Linkedlist |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
-        | Double Circular Linkedlist |                 |                   |
+        | Double Circular Linkedlist |       O(n)      |       O(1)        |
         --------------------------------------------------------------------
         """
         raise NotImplementedError

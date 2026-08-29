@@ -228,12 +228,30 @@ class SingleLinkedlist(BaseLinkedlist):
         Args:
             idx (int): The node at this position is deleted.
         """
-        pass
+        if idx < 0:
+            return
+        if idx > self.count_length():
+            return
+        if self.is_empty():
+            return
+        
+        if idx == 0:
+            self.delete_start()
+            return
+        
+        counter = 0
+        current = self.head
+        while current:
+            if counter + 1 == idx:
+                current.next = current.next.next
+                break
+            current = current.next
+            counter += 1
     
     def delete_by_value(
         self,
         value: int,
-        all: bool = False,
+        delete_all: bool = False,
     ) -> None:
         """
         Deletes a node by value. You can delete either only 
@@ -242,10 +260,26 @@ class SingleLinkedlist(BaseLinkedlist):
 
         Args:
             value (int): Value is the value to be searched and deleted.
-            all (bool, optional): Decides if you delete the first occurence
+            delete_all (bool, optional): Decides if you delete the first occurence
                 or all the occurences of the node. Defaults to False.
         """
-        pass
+        previous = None
+        current = self.head
+        while current:
+            if current.value == value:
+                if previous is None:
+                    self.head = current.next
+                else:
+                    previous.next = current.next
+
+                if not delete_all:
+                    break
+
+                current = current.next
+                continue
+
+            previous = current
+            current = current.next
     
     def count_length(
         self,
@@ -263,10 +297,18 @@ class SingleLinkedlist(BaseLinkedlist):
             current = current.next
         return counter
             
-    def reverese(
+    def reverse(
         self,
     ) -> None:
         """
         Shows a linkedlist in a reverse order.
         """
-        pass
+        previous = None
+        current = self.head
+        while current:
+            next_node = current.next
+            current.next = previous
+            previous = current
+            current = next_node
+
+        self.head = previous

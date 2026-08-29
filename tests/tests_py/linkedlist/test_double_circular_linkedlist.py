@@ -170,10 +170,50 @@ class TestDoubleCircularLinkedlist(unittest.TestCase):
         self.assertEqual([3, 2, 1], node_values)
     
     def test_delete_by_index(self):
-        pass
+        # Insert multiple nodes into the linkedlist
+        values = [3, 2, 1, 0, -1, -2, -3]
+        for value in values:
+            self.linkedlist.insert(value=value)
+        node_values = self.linkedlist.show_linkedlist()
+        self.assertEqual(values, node_values)
+        
+        # Delete idx = 3
+        idx = 3
+        self.linkedlist.delete_by_index(idx=idx)
+        node_values = self.linkedlist.show_linkedlist()
+        self.assertEqual([3, 2, 1, -1, -2, -3], node_values)
+        
+        # Delete idx = 0
+        idx = 0
+        self.linkedlist.delete_by_index(idx=idx)
+        node_values = self.linkedlist.show_linkedlist()
+        self.assertEqual([2, 1, -1, -2, -3], node_values)
+        
+        # Delete idx = 4
+        idx = 4
+        self.linkedlist.delete_by_index(idx=idx)
+        node_values = self.linkedlist.show_linkedlist()
+        self.assertEqual([2, 1, -1, -2], node_values)
     
     def test_delete_by_value(self):
-        pass
+        # Insert multiple nodes into the linkedlist
+        values = [3, 2, 1, 3, -1, -2, 3]
+        for value in values:
+            self.linkedlist.insert(value=value)
+        node_values = self.linkedlist.show_linkedlist()
+        self.assertEqual(values, node_values)
+        
+        # Delete value = 3
+        value = 3
+        self.linkedlist.delete_by_value(value=value, delete_all=False)
+        node_values = self.linkedlist.show_linkedlist()
+        self.assertEqual([2, 1, 3, -1, -2, 3], node_values)
+        
+        # Delete value = 3
+        value = 3
+        self.linkedlist.delete_by_value(value=value, delete_all=True)
+        node_values = self.linkedlist.show_linkedlist()
+        self.assertEqual([2, 1, -1, -2], node_values)
     
     def test_count_length(self):
         # Check empty linkedlist length
@@ -193,4 +233,15 @@ class TestDoubleCircularLinkedlist(unittest.TestCase):
         self.assertEqual(length, result)
     
     def test_reverese(self):
-        pass 
+        self.linkedlist.reverse()
+        self.assertEqual([], self.linkedlist.show_linkedlist())
+
+        for value in [1, 2, 3, 4]:
+            self.linkedlist.insert(value=value)
+        self.linkedlist.reverse()
+        self.assertEqual([4, 3, 2, 1], self.linkedlist.show_linkedlist())
+        self.assertIs(self.linkedlist.head.next.prev, self.linkedlist.head)
+        self.assertIs(self.linkedlist.head.prev.next, self.linkedlist.head)
+
+        self.linkedlist.reverse()
+        self.assertEqual([1, 2, 3, 4], self.linkedlist.show_linkedlist())
